@@ -1,0 +1,17 @@
+block variables
+    - var title = 'FeeSaver'
+    - var page = 'index'
+    
+doctype html
+html(lang='en')
+    head
+        include html/head
+    body.body
+        include html/modules/header
+        main.main.grid
+            include html/modules/index
+        include html/modules/footer
+        include html/popups/how-check
+        include html/popups/how-work
+        link(href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet")
+        script(src="https://unpkg.com/video.js/dist/video.min.js" defer)
