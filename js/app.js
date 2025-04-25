@@ -1169,22 +1169,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
         document.querySelectorAll('.js-headerUserAuth').forEach(btn => {
             btn.addEventListener('click', () => {
-                console.log('click')
+                btn.disabled = true;
+
                 window.Telegram.Login.auth(
-                  { bot_id: '7880026413', request_access: true },
-                  data => {
-                    if (!data) {
-                      console.error('Авторизация не удалась');
-                    } else {
-                      console.log('Данные пользователя:', data);
+                    { bot_id: '7880026413', request_access: true },
+                    data => {
+                        if (!data) {
+                            createNotification('Red', 'Error', 'Please try again later.', 5);
+                            btn.disabled = false;
+                            return;
+                        }
+
+                        console.log('Данные от Telegram:', data);
+
+                        // сохраняем куки (как раньше)
+                        const days = 7;
+                        const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+                        Object.entries(data).forEach(([key, val]) => {
+                            document.cookie = `${key}=${encodeURIComponent(val)};expires=${expires};path=/`;
+                        });
+
+                        // отправляем GET с hash в заголовке
+                        fetch('https://test.feesaver.com/api/auth/telegram', {
+                            method: 'GET',
+                            headers: {
+                                'X-Telegram-Auth-Hash': data.hash,
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                            .then(res => {
+                                if (!res.ok) throw new Error(res.statusText);
+                                return res.json();
+                            })
+                            .then(apiData => {
+                                console.log('Ответ от вашего API:', apiData);
+                            })
+                            .catch(err => {
+                                console.error('Ошибка запроса к API:', err);
+                            })
                     }
-                  }
                 );
             });
         });
+
     }
 });
 
