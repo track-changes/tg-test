@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FeeSaver</title>
+  <base href="/">
+  <meta name="theme-color" content="#121212">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, viewport-fit=cover, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link href="css/style.min.css" type="text/css" rel="stylesheet">
+  <script src="js/vendor.min.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+
+<body class="body">
+  <script type="text/javascript">
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       
+      ym(99489613, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true
+      });
+    </script>
+  <noscript>
+    <div>
+      <img src="https://mc.yandex.ru/watch/99489613" style="position:absolute; left:-9999px;" alt="">
+    </div>
+  </noscript>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HP763EG55X"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'G-HP763EG55X');
+    </script>
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a class="header__logo" href="/">
+          <img src="img/icons/logo.svg" alt="FeeSaver">
+        </a>
+        <nav class="header__menu js-burgerMenu">
+          <ul class="header__links">
+            <li class="header__user header__user--mobile js-headerUser">
+              <button class="header__user-auth js-headerUserAuth" type="button">Авторизация
+                <div class="tg-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+                  <script class="async" src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="FeeSaver_bot" data-size="large" data-lang="ru" data-onauth="onTelegramAuthDesktop"></script>
+                </div>
+              </button>
+              <div class="header__user-menu js-headerUserMenu hide">
+                <button class="header__user-toggle js-headerUserToggle" type="button">
+                  <span>lesha-ka</span>
+                </button>
+                <div class="header__user-dropdown js-headerUserDropdown">
+                  <div class="header__user-item">
+                    <a class="header__user-link header__user-link--buy" href="#">Покупка энергии</a>
+                  </div>
+                  <div class="header__user-item">
+                    <a class="header__user-link header__user-link--settings" href="#">Настройки</a>
+                  </div>
+                  <div class="header__user-item">
+                    <button class="header__user-logout js-header-logout" type="button">Выход</button>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="header__links-item">
+              <a class="header__link" href="about.html">About us</a>
+            </li>
+            <li class="header__links-item">
+              <a class="header__link" href="pricing.html">Pricing plans</a>
+            </li>
+            <li class="header__links-item">
+              <a class="header__link" href="api.html">API </a>
+            </li>
+            <li class="header__links-item">
+              <a class="header__link" href="https://feesaver.gitbook.io/docs" target="_blank">Docs</a>
+            </li>
+            <li class="header__links-item">
+              <a class="header__link" href="blog.html">Blog</a>
+            </li>
+            <li class="header__links-item">
+              <a class="header__tg" href="https://t.me/FeeSaver_bot" target="_blank" onclick="ym(99489613, 'reachGoal', 'join-telegram'); return true;" value="Заказать">
+                <img src="img/icons/logo-mini.svg" alt="FeeSaver">
+                <span>FeeSaver_bot</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__user js-headerUser">
+          <button class="header__user-auth js-headerUserAuth" type="button">Авторизация
+            <div class="tg-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+              <script class="async" src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="FeeSaver_bot" data-size="large" data-lang="ru" data-onauth="onTelegramAuthDesktop"></script>
+            </div>
+          </button>
+          <div class="header__user-menu hide js-headerUserMenu">
+            <button class="header__user-toggle js-headerUserToggle" type="button">
+              <span>lesha-ka</span>
+            </button>
+            <div class="header__user-dropdown js-headerUserDropdown">
+              <div class="header__user-item">
+                <a class="header__user-link" href="#">Покупка энергии</a>
+              </div>
+              <div class="header__user-item">
+                <a class="header__user-link header__user-link--settings" href="#">Настройки</a>
+              </div>
+              <div class="header__user-item">
+                <button class="header__user-logout js-headerLogout" type="button">Выйти</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header__language">
+          <button class="header__language-button js-languageButton" aria-expanded="false" aria-controls="language-list" aria-label="Select language">
+            <span class="header__language-current js-languageCurrent">En</span>
+          </button>
+          <ul class="header__language-list js-languageList hidden" id="language-list" role="listbox" aria-labelledby="language-selector-label">
+            <li class="header__language-item js-languageItem" data-language="ru" role="option" tabindex="0">
+              <a href="#">Русский</a>
+            </li>
+          </ul>
+        </div>
+        <button class="header__burger js-burgerOpener" type="button"></button>
+      </div>
+    </div>
+  </header>
+  <main class="main grid">
+    <section class="descriptor">
+      <div class="container">
+        <div class="descriptor-inner">
+          <h1 class="descriptor__title">FeeSaver - <span>экономь до 80%</span>
+            <br />на&nbsp;комиссиях в&nbsp;сети TRON
+          </h1>
+          <div class="descriptor__subtitle">
+            <p>Надежный партнер в поставке энергии для <b>USDT TRC-20</b>
+            </p>
+            <div class="descriptor__icons js-iconsSwap">
+              <img src="img/index/token-usdt.svg" alt="">
+              <img src="img/index/token-tron.svg" alt="">
+            </div>
+          </div>
+          <div class="descriptor__btns">
+            <a class="descriptor__start" href="https://t.me/FeeSaver_bot" target="_blank" onclick="ym(99489613, 'reachGoal', 'join-telegram'); return true;" value="Заказать">Начать в Telegram</a>
+            <button class="descriptor__info js-popupOpen" type="button" data-popup="how-work">
+              <span>Как это работает?</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="calculator">
+      <div class="container">
+        <div class="calculator-wrapper">
+          <div class="address">
+            <div class="address__corners" inert>
+              <div class="address__corner"></div>
+              <div class="address__corner"></div>
+              <div class="address__corner"></div>
+              <div class="address__corner"></div>
+            </div>
+            <div class="address__inner js-copyWrapper">
+              <div class="address__img">
+                <img src="img/index/qr.png" alt="QR">
+              </div>
+              <div class="address__descroption">
+                <div class="address__label">Мгновенная покупка</div>
+                <h2 class="address__title">Покупка энергии
+                  <br> в сети TRON
+                </h2>
+                <div class="address__box">
+                  <div class="address__text js-copyText">TWEoW6f9QqPJpKvvZXvSpdQsdMfrSui6eN</div>
+                  <button class="address__btn js-copyBtn" type="button" onclick="ym(99489613, 'reachGoal', 'copy-address'); return true;" value="Заказать" data-swap="Скопировано">Копировать адрес</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="calculator-block">
+            <form class="calculator__form js-calculator">
+              <div class="calculator__head">
+                <div class="calculator__name">Кол-во транзакций:</div>
+                <div class="calculator__input">
+                  <input class="js-inputTransactions" type="text" min="1" max="10" placeholder="1" value="1">
+                </div>
+              </div>
+              <div class="calculator__range js-range" id="rangeTransactions" data-min="1" data-max="10"></div>
+              <div class="calculator__checkbox">
+                <input class="js-checkboxMultiply" type="checkbox" id="multiply">
+                <label for="multiply">На адресе получателя нет USDT</label>
+              </div>
+              <div class="calculator__text">Необходимо отправить:</div>
+              <div class="calculator__result">
+                <b class="js-resultTRX">0 </b>
+                <span class="js-resultUSDT">~0.00 USD </span>
+                <strike class="js-resultStrike">0</strike>
+              </div>
+            </form>
+          </div>
+          <div class="stats">
+            <div class="stats__title">Два простых шага:</div>
+            <div class="stats__info">
+              <div class="stats__block">
+                <div class="stats__icon">
+                  <img src="img/icons/energy.svg" alt="">
+                </div>
+                <div class="stats__text">
+                  <span>Шаг 1:</span>
+                  <div class="stats__description">
+                    <p>Отсканируйте QR-код</p>
+                  </div>
+                </div>
+              </div>
+              <div class="stats__block">
+                <div class="stats__icon">
+                  <img src="img/icons/energy.svg" alt="">
+                </div>
+                <div class="stats__text">
+                  <span>Шаг 2:</span>
+                  <div class="stats__description">
+                    <p>Отправьте <span class="js-statNumber">6</span>, чтобы
+                      <br>бесплатно совершить транзакцию
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="stats__wallets">
+              <ul class="stats__wallets-list">
+                <li class="stats__wallets-item">
+                  <img src="img/index/wallet1.svg" alt="">
+                </li>
+                <li class="stats__wallets-item">
+                  <img src="img/index/wallet2.svg" alt="">
+                </li>
+                <li class="stats__wallets-item">
+                  <img src="img/index/wallet3.svg" alt="">
+                </li>
+                <li class="stats__wallets-item">
+                  <img src="img/index/wallet4.svg" alt="">
+                </li>
+                <li class="stats__wallets-item">
+                  <img src="img/index/more.svg" alt="">
+                </li>
+              </ul>
+              <p class="stats__wallets-text">Доступно для любых кошельков</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="video section">
+      <div class="container">
+        <div class="video__container">
+          <div class="video__bg" inert></div>
+          <button class="video__play js-playBtn" aria-label="Play"></button>
+          <div class="video__wrapper">
+            <video class="video-js" id="player" controls preload="auto" autoplay muted loop playsinline webkit-playsinline></video>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="advantages">
+      <div class="container">
+        <div class="video__tabs">
+          <ul class="video__tabs-list">
+            <li class="video__tabs-item js-videoTab active" data-base-name="video1">Смарт-режим</li>
+            <li class="video__tabs-item js-videoTab" data-base-name="video2">Мгновенная покупка</li>
+          </ul>
+        </div>
+        <p class="advantages__description">Надежный инструмент для комфортной работы с USDT TRC-20 и другими токенами TRON</p>
+        <ul class="advantages__list">
+          <li class="advantages__item">
+            <div class="advantages__title">Используйте все <span>преимущества</span> сервиса</div>
+            <div class="advantages__subtitle">Сделайте работу с сетью TRON максимально эффективной!</div>
+            <div class="advantages__img">
+              <img src="img/index/advantages.svg" alt="">
+            </div>
+          </li>
+          <li class="advantages__item">
+            <div class="advantages__icon">
+              <img src="img/index/advantage1.svg" alt="">
+            </div>
+            <div class="advantages__name">Низкие комиссии</div>
+            <div class="advantages__text">Предлагаем конкурентные условия на рынке</div>
+          </li>
+          <li class="advantages__item">
+            <div class="advantages__icon">
+              <img src="img/index/advantage2.svg" alt="">
+            </div>
+            <div class="advantages__name">Скорость</div>
+            <div class="advantages__text">Энергия предоставляется
+              <br /> без задержек
+            </div>
+          </li>
+          <li class="advantages__item">
+            <div class="advantages__icon">
+              <img src="img/index/advantage3.svg" alt="">
+            </div>
+            <div class="advantages__name">Гибкость</div>
+            <div class="advantages__text">Мы предлагаем тарифы для любых объемов транзакций</div>
+          </li>
+          <li class="advantages__item">
+            <div class="advantages__icon">
+              <img src="img/index/advantage4.svg" alt="">
+            </div>
+            <div class="advantages__name">Поддержка 24/7</div>
+            <div class="advantages__text">Наша команда
+              <br />всегда готова помочь
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="solution js-solution">
+      <div class="container">
+        <div class="solution__box">
+          <div class="solution__head">
+            <h2 class="solution__title">Выгодные условия <span>для&nbsp;бизнеса</span>
+            </h2>
+            <p class="solution__text">Мы рады представить наше API—решение для покупки энергии в сети TRON - мощный инструмент для автоматизации и оптимизации комиссии за транзакции</p>
+            <a class="solution__link" href="https://t.me/FeeSaver_manager" target="_blank">Связаться с менеджером</a>
+            <div class="solution__head-imgs">
+              <img class="laptop" src="img/index/solution-laptop.svg" alt="">
+              <img class="circle" src="img/index/solution-circle.svg" alt="">
+              <img class="money" src="img/index/solution-money.svg" alt="">
+            </div>
+          </div>
+          <div class="solution__inner">
+            <div class="solution__description">
+              <div class="solution__switches">
+                <input class="solution__switch js-solutionSwitch" type="radio" name="solution" id="deposit-address" checked hidden>
+                <label for="deposit-address">Депозитный адрес</label>
+                <input class="solution__switch js-solutionSwitch" type="radio" name="solution" id="hot-wallet" hidden>
+                <label for="hot-wallet">Горячий кошелек</label>
+              </div>
+              <ol class="solution__steps js-solutionSteps" data-solution="deposit-address">
+                <li class="solution__step js-solutionStep" data-step="1">
+                  <span class="solution__step-number">Шаг 1: </span>
+                  <p class="solution__step-text">Вы генерируете депозитный адрес для каждого клиента.</p>
+                </li>
+                <li class="solution__step js-solutionStep" data-step="2">
+                  <span class="solution__step-number">Шаг 2: </span>
+                  <p class="solution__step-text">Клиент совершает транзакцию на депозитный адрес. Криптовалюта проходит AML-проверку.</p>
+                </li>
+                <li class="solution__step js-solutionStep" data-step="3">
+                  <span class="solution__step-number">Шаг 3: </span>
+                  <p class="solution__step-text">FeeSaver предоставляет энергию для выполнения бесплатной транзакции.</p>
+                </li>
+                <li class="solution__step js-solutionStep" data-step="4">
+                  <span class="solution__step-number">Шаг 4: </span>
+                  <p class="solution__step-text">Ваш сервис собирает криптовалюту на единый горячий кошелек.</p>
+                </li>
+              </ol>
+              <ol class="solution__steps js-solutionSteps hide" data-solution="hot-wallet">
+                <li class="solution__step js-solutionStep" data-step="5">
+                  <span class="solution__step-number">Step 1: </span>
+                  <p class="solution__step-text">FeeSaver provides energy to complete a free transaction</p>
+                </li>
+                <li class="solution__step js-solutionStep" data-step="6">
+                  <span class="solution__step-number">Step 2: </span>
+                  <p class="solution__step-text">You process the withdrawal from the hot wallet to the client’s address</p>
+                </li>
+              </ol>
+            </div>
+            <div class="schemes js-solutionSchemes">
+              <div class="scheme js-solutionScheme" data-solution="deposit-address">
+                <div class="scheme__incoming">
+                  <span>Входящая транзакция</span>
+                  <p>https://tronscan.org/#/transaction/afb63d...</p>
+                </div>
+                <div class="scheme__service">
+                  <div class="lottie-big" id="lottie-laptop"></div>
+                  <span>Ваш сервис</span>
+                </div>
+                <div class="scheme__address">
+                  <div>TLVhmaZY...K3Xd3J </div>
+                  <b>Депозитный адрес</b>
+                  <span>Клиент А</span>
+                </div>
+                <div class="scheme__energy">
+                  <p>Energy</p>
+                  <div class="lottie" id="lottie-light"></div>
+                </div>
+                <div class="scheme__transaction">Транзакция<span class="lottie" id="lottie-flyingmoney"></span>
+                </div>
+                <div class="scheme__start">
+                  <img src="img/icons/logo.svg" alt="feesaver">
+                </div>
+                <div class="scheme__wallet">
+                  <div class="lottie-big" id="lottie-money"></div>
+                  <span>Горячий кошелек</span>
+                </div>
+              </div>
+              <div class="scheme scheme--second js-solutionScheme hide" data-solution="hot-wallet">
+                <div class="scheme__start">
+                  <img src="img/icons/logo.svg" alt="feesaver">
+                </div>
+                <div class="scheme__energy">
+                  <p>Energy</p>
+                  <div class="lottie" id="lottie-light-second"></div>
+                </div>
+                <div class="scheme__address">
+                  <div>TLVhmaZY...K3Xd3J </div>
+                  <b>Адрес вывода</b>
+                  <span>Клиент А</span>
+                </div>
+                <div class="scheme__wallet">
+                  <div class="lottie-big" id="lottie-money-second"></div>
+                  <span>Горячий кошелек</span>
+                </div>
+                <div class="scheme__incoming">
+                  <span>Исходящая транзакция</span>
+                  <p>https://tronscan.org/#/transaction/afb63d...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="referral">
+      <div class="container">
+        <div class="referral-inner">
+          <h3 class="referral__title">Реферальная программа</h3>
+          <p class="referral__text referral__text--ru">
+            <a href="referral.html" target="_blank">Присоединяйтесь к нашей реферальной программе</a> и начните зарабатывать до 13% от сумм транзакций ваших друзей
+          </p>
+          <b class="referral__percent">8% </b>
+        </div>
+      </div>
+    </section>
+    <section class="blog-section">
+      <div class="container">
+        <div class="blog-header">
+          <h1 class="section-title">FeeSaver Блог</h1>
+          <a class="blog-header__link" href="blog.html">Смотреть все</a>
+        </div>
+        <ul class="blog__articles">
+          <li class="blog__article-item">
+            <a class="blog__article" href="article.html">
+              <div class="blog__article-img">
+                <img src="img/article/article-new.png" alt="Article Image">
+              </div>
+              <div class="blog__article-inner">
+                <div class="blog__article-info">
+                  <div class="blog__article-tag">News</div>
+                  <time class="blog__article-date" datetime="2021-01-10">10.01.2025</time>
+                </div>
+                <h4 class="blog__article-title">FeeSaver - Save on TRON fees. FeeSaver - Save on TRON fees</h4>
+              </div>
+            </a>
+          </li>
+          <li class="blog__article-item">
+            <a class="blog__article" href="article.html">
+              <div class="blog__article-img">
+                <img src="img/article/article-new.png" alt="Article Image">
+              </div>
+              <div class="blog__article-inner">
+                <div class="blog__article-info">
+                  <div class="blog__article-tag">News</div>
+                  <time class="blog__article-date" datetime="2021-01-10">10.01.2025</time>
+                </div>
+                <h4 class="blog__article-title">FeeSaver - Save on TRON fees. FeeSaver - Save on TRON fees</h4>
+              </div>
+            </a>
+          </li>
+          <li class="blog__article-item">
+            <a class="blog__article" href="article.html">
+              <div class="blog__article-img">
+                <img src="img/article/article-new.png" alt="Article Image">
+              </div>
+              <div class="blog__article-inner">
+                <div class="blog__article-info">
+                  <div class="blog__article-tag">News</div>
+                  <time class="blog__article-date" datetime="2021-01-10">10.01.2025</time>
+                </div>
+                <h4 class="blog__article-title">FeeSaver - Save on TRON fees. FeeSaver - Save on TRON fees</h4>
+              </div>
+            </a>
+          </li>
+          <li class="blog__article-item">
+            <a class="blog__article" href="article.html">
+              <div class="blog__article-img">
+                <img src="img/article/article-new.png" alt="Article Image">
+              </div>
+              <div class="blog__article-inner">
+                <div class="blog__article-info">
+                  <div class="blog__article-tag">News</div>
+                  <time class="blog__article-date" datetime="2021-01-10">10.01.2025</time>
+                </div>
+                <h4 class="blog__article-title">FeeSaver - Save on TRON fees. FeeSaver - Save on TRON fees</h4>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="faq faq--bg js-faqSection">
+      <div class="container">
+        <div class="faq__header">
+          <h2 class="faq__title">Часто задаваемые вопросы (FAQ)</h2>
+          <p class="faq__subtitle">В этом разделе вы найдете ответы на самые популярные вопросы о нашем сервисе. Мы постарались собрать всю необходимую информацию, чтобы сделать использование платформы максимально удобным и понятным.</p>
+          <a class="faq__link" href="https://feesaver.gitbook.io/docs" target="_blank">FeeSaver Wiki</a>
+        </div>
+        <div class="faq__content">
+          <ol class="faq__list">
+            <li class="faq__item js-faqNewItem">
+              <div class="faq__question js-faqNewQuestion">
+                <span class="faq__text">Do I need to grant access from my wallet to your service?</span>
+                <button class="faq__toggle" type="button" aria-label="Show answer"></button>
+              </div>
+              <div class="faq__accordion">
+                <div class="faq__accordion-animation">
+                  <div class="faq__accordion-wrapper">
+                    <div class="faq__accordion-content">
+                      <div class="faq__answer">Energy in the <a href="#">TRON</a> network is a resource used to execute smart contracts. Instead of paying fees for every transaction, you can burn energy to save on fees. This is especially useful for users actively interacting with smart contracts, including USDT TRC-20 smart contracts.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="faq__item js-faqNewItem">
+              <div class="faq__question js-faqNewQuestion">
+                <span class="faq__text">If I want to transfer my USDT to another address using your solution, do I need to send the USDT to you?</span>
+                <button class="faq__toggle" type="button" aria-label="Show answer"></button>
+              </div>
+              <div class="faq__accordion">
+                <div class="faq__accordion-animation">
+                  <div class="faq__accordion-wrapper">
+                    <div class="faq__accordion-content">
+                      <div class="faq__answer">
+                        <p>
+                          <strong>Method 1: Burn TRX</strong>
+                        </p>
+                        <p>TRX is automatically burned during transactions if you don’t have enough energy.</p>
+                        <p>
+                          <strong>Method 2: Freeze TRX</strong>
+                        </p>
+                        <p>You can stake TRX to receive energy, but this requires a significant amount, and your funds remain locked.</p>
+                        <p>
+                          <strong>Method 3: Rent energy through FeeSaver</strong>
+                        </p>
+                        <p>FeeSaver allows you to rent energy without freezing or burning TRX. For example, renting 132,000 energy (1-2 transactions) costs only 12 TRX, while burning TRX could cost around 28 TRX. This helps save up to 60% on fees.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="faq__item js-faqNewItem">
+              <div class="faq__question js-faqNewQuestion">
+                <span class="faq__text">How much energy is spent for 1 transfer?</span>
+                <button class="faq__toggle" type="button" aria-label="Show answer"></button>
+              </div>
+              <div class="faq__accordion">
+                <div class="faq__accordion-animation">
+                  <div class="faq__accordion-wrapper">
+                    <div class="faq__accordion-content">
+                      <div class="faq__answer">You will receive energy within 5-10 seconds after payment. You can order energy for 1, 3, 24 hours, 3 days, 1 week, and 1 month. To get better terms, use the "Auto-Renew" feature. After payment, the energy will be sent to your address for the entire rental period or until it is completely used.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="faq__item js-faqNewItem">
+              <div class="faq__question js-faqNewQuestion">
+                <span class="faq__text">Can I buy energy and transfer it to another wallet?</span>
+                <button class="faq__toggle" type="button" aria-label="Show answer"></button>
+              </div>
+              <div class="faq__accordion">
+                <div class="faq__accordion-animation">
+                  <div class="faq__accordion-wrapper">
+                    <div class="faq__accordion-content">
+                      <div class="faq__answer">If you use Trust Wallet, you must have at least 28 TRX in your balance, even if energy is available. For example, if the fee shows as 13.49 TRX, purchase 65,150 energy. If the fee is 27.74 TRX, you will need 130,300 energy. After verifying the energy delivery, you can complete your USDT transfer.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="faq__item js-faqNewItem">
+              <div class="faq__question js-faqNewQuestion">
+                <span class="faq__text">How much can I save with the bot?</span>
+                <button class="faq__toggle" type="button" aria-label="Show answer"></button>
+              </div>
+              <div class="faq__accordion">
+                <div class="faq__accordion-animation">
+                  <div class="faq__accordion-wrapper">
+                    <div class="faq__accordion-content">
+                      <div class="faq__answer">Follow the detailed Flexible Energy Purchase or Instant Energy Purchase instructions.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-head">
+          <div class="footer__logo">
+            <img src="img/icons/logo-gray.svg" alt="FeeSaver">
+          </div>
+          <ul class="footer__socials socials">
+            <li>
+              <a class="social social--x" href="https://x.com/feesaver_com" target="_blank" aria-label="FeeSaver X"></a>
+            </li>
+            <li>
+              <a class="social social--telegram" href="https://t.me/feesaver_ann" target="_blank" aria-label="FeeSaver Telegram"></a>
+            </li>
+            <li>
+              <a class="social social--youtube" href="https://www.youtube.com/@FeeSaver" target="_blank" aria-label="FeeSaver YouTube"></a>
+            </li>
+          </ul>
+          <div class="footer__details footer__details--tablet">
+            <b>TRUE SOFT SOLUTIONS - FZCO</b>
+            <span>UAE, Dubai, Dubai Digital Park, А1</span>
+            <a href="tel:+97142285285">+971 4 228 52 85</a>
+          </div>
+          <a class="footer__trustpilot footer__trustpilot--tablet" href="https://www.trustpilot.com/review/feesaver.com" target="_blank">
+            <b>FeeSaver на</b>
+            <img src="img/icons/star.svg" alt="">
+            <span>Trustpilot</span>
+          </a>
+        </div>
+        <div class="footer__links">
+          <div class="footer__links-box js-footerLinksBox">
+            <div class="footer__links-toggle js-footerLinksToggle">Компания</div>
+            <ul class="footer__links-list js-footerLinksList">
+              <li class="footer__link">
+                <a href="about.html">О нас</a>
+              </li>
+              <li class="footer__link">
+                <a href="pricing.html">Тарифы</a>
+              </li>
+              <li class="footer__link">
+                <a href="contact.html">Контакты</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__links-box js-footerLinksBox">
+            <div class="footer__links-toggle js-footerLinksToggle">Пользователю</div>
+            <ul class="footer__links-list js-footerLinksList">
+              <li class="footer__link">
+                <a href="https://t.me/FeeSaver_bot" target="_blank" onclick="ym(99489613, 'reachGoal', 'join-telegram'); return true;" value="Заказать">Покупка энергии</a>
+              </li>
+              <li class="footer__link">
+                <a href="referral.html">Реферальная программа</a>
+              </li>
+              <li class="footer__link">
+                <a href="https://t.me/FeeSaver_support" target="_blank">Поддержка</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__links-box js-footerLinksBox">
+            <div class="footer__links-toggle js-footerLinksToggle">Ресурсы</div>
+            <ul class="footer__links-list js-footerLinksList">
+              <li class="footer__link">
+                <a href="https://feesaver.gitbook.io/docs" target="_blank">Документация</a>
+              </li>
+              <li class="footer__link">
+                <a href="blog.html">Блог</a>
+              </li>
+              <li class="footer__link">
+                <a href="price.html">Цена TRX</a>
+              </li>
+              <li class="footer__link">
+                <a href="commission.html">Tron Gas</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__links-box js-footerLinksBox">
+            <div class="footer__links-toggle js-footerLinksToggle">Бизнесу</div>
+            <ul class="footer__links-list js-footerLinksList">
+              <li class="footer__link">
+                <a href="api.html">Покупка по API </a>
+              </li>
+              <li class="footer__link">
+                <a href="https://api.feesaver.com/swagger/index.html" target="_blank" onclick="ym(99489613, 'reachGoal', 'api-docs'); return true;" value="Заказать">Документация API</a>
+              </li>
+              <li class="footer__link">
+                <a href="https://t.me/FeeSaver_manager" target="_blank">Связь с менеджером</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-info">
+          <div class="footer__details">
+            <b>TRUE SOFT SOLUTIONS - FZCO</b>
+            <span>UAE, Dubai, Dubai Digital Park, А1</span>
+            <a href="tel:+97142285285">+971 4 228 52 85</a>
+          </div>
+          <div class="footer__copyright">© feesaver.com Copyright 2025
+            <br>All Rights Reserved
+          </div>
+          <div class="footer__tron">
+            <span>Based on </span>
+            <img src="img/icons/tron.svg" alt="Tron">
+            <span>Tron</span>
+          </div>
+          <ul class="footer__socials footer__socials--tablet socials">
+            <li>
+              <a class="social social--x" href="https://x.com/feesaver_com" target="_blank" aria-label="FeeSaver X"></a>
+            </li>
+            <li>
+              <a class="social social--telegram" href="https://t.me/feesaver_ann" target="_blank" aria-label="FeeSaver Telegram"></a>
+            </li>
+            <li>
+              <a class="social social--youtube" href="https://www.youtube.com/@FeeSaver" target="_blank" aria-label="FeeSaver YouTube"></a>
+            </li>
+          </ul>
+          <a class="footer__trustpilot" href="https://www.trustpilot.com/review/feesaver.com" target="_blank">
+            <b>FeeSaver на</b>
+            <img src="img/icons/star.svg" alt="">
+            <span>Trustpilot</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="cookie js-cookie">
+    <div class="cookie-inner">
+      <p class="cookie__text">Оставаясь на сайте, вы соглашаетесь с использованием файлов cookie для улучшения пользовательского опыта, персонализации контента и аналитики</p>
+      <button class="cookie__btn" type="button">Хорошо</button>
+      <div class="cookie__img">
+        <img src="img/icons/cookie.svg" alt="Cookie">
+      </div>
+    </div>
+  </div>
+  <div class="popup js-popup hide" id="how-check">
+    <div class="popup-inner">
+      <div class="popup-inner__head">
+        <div class="popup__title">How to check?</div>
+        <div class="popup__close js-popupClose"></div>
+      </div>
+      <div class="popup-inner__wrap">
+        <p>1. You need to go to the <span>Tronscan</span> service.</p>
+        <p>2. Enter your address in the search field.</p>
+        <img src="img/popup-check1.jpg" alt="">
+        <p>3. Check the Total Energy value. It should be increased according to the TRX you sent.</p>
+        <img src="img/popup-check2.jpg" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="popup js-popup hide" id="how-work">
+    <div class="popup-inner">
+      <div class="popup-inner__head">
+        <div class="popup__title">How it works?</div>
+        <div class="popup__close js-popupClose"></div>
+      </div>
+      <div class="popup-inner__wrap">
+        <p>One of the most popular and widely used tokens on the TRON network is USDT.</p>
+        <p>As with other blockchains, a fee is required to send tokens.</p>
+        <p>On TRON, the fee can be paid in two ways:</p>
+        <ol>
+          <li>Using TRX held on the address.</li>
+          <li>Using the energy available on the address.</li>
+        </ol>
+        <p>If energy is available on your address, it will be used by default for the transaction.</p>
+        <p>
+          <span>Energy </span>is a renewable resource, unlike TRX.
+        </p>
+        <p>Our service allows you to rent a specific amount of energy for a certain period to complete the desired transactions. You will pay several times less than if you performed transactions using TRX.</p>
+        <p>Below is a calculator to help you determine the amount of energy you need and calculate your savings.</p>
+        <p>To obtain energy for a specified period, you need to:</p>
+        <ol>
+          <li>Select the duration for which you need the energy. The longer the duration, the greater the savings.</li>
+          <li>Copy the TRX address provided for sending. Scan the QR code or copy the address.</li>
+          <li>Send TRX to this address (you can determine the amount using the calculator below). <span>You must send it from the address where you want to receive the energy.</span>
+          </li>
+          <li>Wait for the energy to be credited to your address.</li>
+        </ol>
+        <p>Once the system confirms the receipt of TRX, the energy will be automatically delegated to your address. Be sure to check the energy balance through TRONSCAN.</p>
+        <p>
+          <strong>IMPORTANT:</strong>&nbsp;Most multi-wallets check the balance before sending a transaction. However, they do not consider the availability of energy. Therefore, we recommend having at least enough TRX on your balance to perform one transaction. While these TRX will not be used during the transaction, this ensures a successful transaction in multi-wallets.
+        </p>
+      </div>
+    </div>
+  </div>
+  <link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/video.js/dist/video.min.js" defer></script>
+</body>
+
+</html>
