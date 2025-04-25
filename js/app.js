@@ -1170,19 +1170,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        function onTelegramAuth(user) {
-            console.log('Ответ от Telegram:', user);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.header__user-auth').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    btn.disabled = true;
-                });
+        document.querySelectorAll('.js-headerUserAuth').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('click')
+                window.Telegram.Login.auth(
+                  { bot_id: '7880026413', request_access: true },
+                  data => {
+                    if (!data) {
+                      console.error('Авторизация не удалась');
+                    } else {
+                      console.log('Данные пользователя:', data);
+                    }
+                  }
+                );
             });
         });
     }
 });
+
 
 function getVideoSource(baseName) {
     var windowWidth = window.innerWidth;
