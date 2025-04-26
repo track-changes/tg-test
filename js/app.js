@@ -1172,7 +1172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.js-headerUserAuth').forEach(btn => {
             btn.addEventListener('click', () => {
                 btn.disabled = true;
-
                 window.Telegram.Login.auth(
                     { bot_id: '7880026413', request_access: true },
                     data => {
@@ -1184,18 +1183,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         console.log('Данные от Telegram:', data);
 
-                        // сохраняем куки (как раньше)
+                        // 1) Сохраняем куки (как раньше)
                         const days = 7;
                         const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
                         Object.entries(data).forEach(([key, val]) => {
                             document.cookie = `${key}=${encodeURIComponent(val)};expires=${expires};path=/`;
                         });
 
-                        // отправляем GET с hash в заголовке
-                        fetch('https://test.feesaver.com/api/auth/telegram', {
+                        // 2) Формируем строку запроса из всех полей data
+                        const params = new URLSearchParams({
+                            id: data.id,
+                            first_name: data.first_name,
+                            last_name: data.last_name || '',    // если нет поля — отправим пустую строку
+                            username: data.username,
+                            photo_url: data.photo_url,
+                            auth_date: data.auth_date,
+                            hash: data.hash
+                        }).toString();
+
+                        // 3) Отправляем GET с полным query string
+                        fetch(`https://test.feesaver.com/api/auth/telegram?${params}`, {
                             method: 'GET',
                             headers: {
-                                'X-Telegram-Auth-Hash': data.hash,
                                 'Content-Type': 'application/json'
                             }
                         })
@@ -1209,6 +1218,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             .catch(err => {
                                 console.error('Ошибка запроса к API:', err);
                             })
+                            .finally(() => {
+                                btn.disabled = false;
+                                btn.textContent = 'Авторизация';
+                            });
                     }
                 );
             });
