@@ -1194,7 +1194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const params = new URLSearchParams({
                             id: data.id,
                             first_name: data.first_name,
-                            last_name: data.last_name || '',    // если нет поля — отправим пустую строку
+                            last_name: data.last_name || ' ',    // если нет поля — отправим пустую строку
                             username: data.username,
                             photo_url: data.photo_url,
                             auth_date: data.auth_date,
