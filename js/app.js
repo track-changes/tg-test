@@ -1173,7 +1173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 btn.disabled = true;
                 window.Telegram.Login.auth(
-                    { bot_id: '7880026413', request_access: true },
+                    { bot_id: '7725401589', request_access: true },
                     data => {
                         if (!data) {
                             createNotification('Red', 'Error', 'Please try again later.', 5);
@@ -1183,14 +1183,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         console.log('Данные от Telegram:', data);
 
-                        // 1) Сохраняем куки (как раньше)
                         const days = 7;
                         const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
                         Object.entries(data).forEach(([key, val]) => {
                             document.cookie = `${key}=${encodeURIComponent(val)};expires=${expires};path=/`;
                         });
 
-                        // 2) Формируем строку запроса из всех полей data
                         const params = new URLSearchParams({
                             id: data.id,
                             first_name: data.first_name,
@@ -1201,7 +1199,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             hash: data.hash
                         }).toString();
 
-                        // 3) Отправляем GET с полным query string
                         fetch(`https://test.feesaver.com/api/auth/telegram?${params}`, {
                             method: 'GET',
                             headers: {
