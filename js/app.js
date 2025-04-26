@@ -1147,87 +1147,118 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 document.addEventListener('DOMContentLoaded', () => {
-    const userMenus = document.querySelectorAll('.js-headerUserMenu');
-    if (userMenus) {
-        userMenus.forEach(menu => {
-            const toggleBtn = menu.querySelector('.js-headerUserToggle');
-            const dropdown = menu.querySelector('.js-headerUserDropdown');
-
-            toggleBtn.addEventListener('click', e => {
-                e.stopPropagation();
-                menu.classList.toggle('active');
-                dropdown.classList.toggle('active');
-            });
-        });
-
-        document.addEventListener('click', e => {
-            userMenus.forEach(menu => {
-                const dropdown = menu.querySelector('.header__user-dropdown');
-                if (menu.classList.contains('active') && !menu.contains(e.target)) {
-                    menu.classList.remove('active');
-                    dropdown.classList.remove('active');
-                }
-            });
-        });
-        document.querySelectorAll('.js-headerUserAuth').forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.disabled = true;
-                window.Telegram.Login.auth(
-                    { bot_id: '7725401589', request_access: true },
-                    data => {
-                        if (!data) {
-                            createNotification('Red', 'Error', 'Please try again later.', 5);
-                            btn.disabled = false;
-                            return;
-                        }
-
-                        console.log('Данные от Telegram:', data);
-
-                        const days = 7;
-                        const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
-                        Object.entries(data).forEach(([key, val]) => {
-                            document.cookie = `${key}=${encodeURIComponent(val)};expires=${expires};path=/`;
-                        });
-
-                        const params = new URLSearchParams({
-                            id: data.id,
-                            first_name: data.first_name,
-                            last_name: data.last_name || ' ',    // если нет поля — отправим пустую строку
-                            username: data.username,
-                            photo_url: data.photo_url,
-                            auth_date: data.auth_date,
-                            hash: data.hash
-                        }).toString();
-
-                        fetch(`https://test.feesaver.com/api/auth/telegram?${params}`, {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        })
-                            .then(res => {
-                                if (!res.ok) throw new Error(res.statusText);
-                                return res.json();
-                            })
-                            .then(apiData => {
-                                console.log('Ответ от вашего API:', apiData);
-                            })
-                            .catch(err => {
-                                console.error('Ошибка запроса к API:', err);
-                            })
-                            .finally(() => {
-                                btn.disabled = false;
-                                btn.textContent = 'Авторизация';
-                            });
-                    }
-                );
-            });
-        });
-
+    function getCookie(name) {
+        const m = document.cookie.match('(^|;)\\s*' + name + '=([^;]+)');
+        return m ? decodeURIComponent(m[2]) : null;
     }
+
+    function deleteCookie(name) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+    }
+
+    function updateAuthUI() {
+        const token = getCookie('token');
+
+        document.querySelectorAll('.js-headerUserAuth').forEach(btn => {
+            btn.classList.toggle('hide', Boolean(token));
+        });
+        document.querySelectorAll('.js-headerUserMenu').forEach(menu => {
+            menu.classList.toggle('hide', !token);
+        });
+
+        if (token) {
+            const username = getCookie('username') || '';
+            const photo = getCookie('photo_url') || './img/icons/user.svg';
+            document.querySelectorAll('.js-headerUserToggle').forEach(toggle => {
+                const span = toggle.querySelector('span');
+                if (span) span.textContent = username;
+                const img = toggle.querySelector('img');
+                if (img) img.src = photo;
+            });
+        }
+    }
+
+    updateAuthUI();
+
+    document.querySelectorAll('.js-headerUserAuth').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.disabled = true;
+            btn.textContent = 'Входим…';
+
+            window.Telegram.Login.auth(
+                { bot_id: '7725401589', request_access: true },
+                data => {
+                    if (!data) {
+                        createNotification('Red', 'Error', 'Please try again later.', 5);
+                        btn.disabled = false;
+                        btn.textContent = 'Авторизация';
+                        return;
+                    }
+
+                    // сохраняем навсегда
+                    const forever = 'expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/';
+                    document.cookie = `photo_url=${encodeURIComponent(data.photo_url)};${forever}`;
+                    document.cookie = `username=${encodeURIComponent(data.username)};${forever}`;
+
+                    // формируем query string
+                    const params = new URLSearchParams({
+                        id: data.id,
+                        first_name: data.first_name,
+                        last_name: data.last_name || '',
+                        username: data.username,
+                        photo_url: data.photo_url,
+                        auth_date: data.auth_date,
+                        hash: data.hash
+                    }).toString();
+
+                    fetch(`https://test.feesaver.com/api/auth/telegram?${params}`)
+                        .then(res => {
+                            if (!res.ok) throw new Error(res.statusText);
+                            return res.json();
+                        })
+                        .then(apiData => {
+                            console.log('Ответ от API:', apiData);
+                            document.cookie = `token=${apiData.token};${forever}`;
+                            updateAuthUI();  // переключаем UI на залогиненный
+                        })
+                        .catch(err => {
+                            console.error('Ошибка запроса к API:', err);
+                        })
+                        .finally(() => {
+                            btn.disabled = false;
+                            btn.textContent = 'Авторизация';
+                        });
+                }
+            );
+        });
+    });
+
+    document.querySelectorAll('.js-headerLogout').forEach(btn => {
+        btn.addEventListener('click', () => {
+            ['photo_url', 'username', 'token'].forEach(deleteCookie);
+            updateAuthUI();
+        });
+    });
+
+    const userMenus = document.querySelectorAll('.js-headerUserMenu');
+    userMenus.forEach(menu => {
+        const toggleBtn = menu.querySelector('.js-headerUserToggle');
+        const dropdown = menu.querySelector('.js-headerUserDropdown');
+        toggleBtn.addEventListener('click', e => {
+            e.stopPropagation();
+            menu.classList.toggle('active');
+            dropdown.classList.toggle('active');
+        });
+    });
+    document.addEventListener('click', e => {
+        userMenus.forEach(menu => {
+            if (menu.classList.contains('active') && !menu.contains(e.target)) {
+                menu.classList.remove('active');
+                menu.querySelector('.js-headerUserDropdown').classList.remove('active');
+            }
+        });
+    });
 });
-
-
 function getVideoSource(baseName) {
     var windowWidth = window.innerWidth;
     if (windowWidth < 768) {

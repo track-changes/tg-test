@@ -3349,6 +3349,12 @@ body {
   align-items: center;
   gap: 8px;
 }
+.header__user-toggle img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
 .header__user-toggle span {
   white-space: nowrap;
   max-width: 120px;
@@ -3362,12 +3368,6 @@ body {
     background-color: #222222;
     border-color: #222222;
   }
-}
-.header__user-toggle::before {
-  content: "";
-  width: 20px;
-  height: 20px;
-  background: url(../img/icons/user.svg) center no-repeat;
 }
 .header__user-toggle::after {
   content: "";
